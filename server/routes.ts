@@ -1,4 +1,4 @@
-import type { Express, Request, Response } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
@@ -7,6 +7,14 @@ import { fromZodError } from "zod-validation-error";
 import * as crypto from "crypto";
 import session from "express-session";
 import MemoryStore from "memorystore";
+
+// Add custom properties to the session
+declare module 'express-session' {
+  interface SessionData {
+    userId: number;
+    username: string;
+  }
+}
 
 const SessionStore = MemoryStore(session);
 
