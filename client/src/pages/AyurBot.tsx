@@ -10,8 +10,9 @@ import { useToast } from "@/hooks/use-toast";
 import { ayurvedicBooks } from "@/data/books";
 import { Book, Upload, Bot, Search, Send, Loader2 } from "lucide-react";
 
-// Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
+// Initialize Google Generative AI using the provided API key
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY || "";
+const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 
 export default function AyurBot() {
   const { toast } = useToast();

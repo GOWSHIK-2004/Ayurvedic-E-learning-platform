@@ -12,6 +12,8 @@ import Register from "@/pages/Register";
 import GenieLab from "@/pages/GenieLab";
 import Resources from "@/pages/Resources";
 import Network from "@/pages/Network";
+import AyurBot from "@/pages/AyurBot";
+import Forum from "@/pages/Forum";
 
 function Router() {
   return (
@@ -22,6 +24,8 @@ function Router() {
       <Route path="/genielab" component={GenieLab} />
       <Route path="/resources" component={Resources} />
       <Route path="/network" component={Network} />
+      <Route path="/ayurbot" component={AyurBot} />
+      <Route path="/forum" component={Forum} />
       <Route component={NotFound} />
     </Switch>
   );
