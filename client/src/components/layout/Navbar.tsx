@@ -23,7 +23,7 @@ export default function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/">
                 <a className="text-primary font-heading text-xl font-bold">
-                  AyurConnect
+                  Vedic Genie
                 </a>
               </Link>
             </div>
@@ -36,20 +36,36 @@ export default function Navbar() {
                   Home
                 </a>
               </Link>
-              <Link href="/network">
-                <a className={cn(
-                  "border-transparent text-darkText hover:text-primary border-b-2 hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium",
-                  isActive("/network") && "border-primary text-primary border-b-2"
-                )}>
-                  Network
-                </a>
-              </Link>
               <Link href="/genielab">
                 <a className={cn(
                   "border-transparent text-darkText hover:text-primary border-b-2 hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium",
                   isActive("/genielab") && "border-primary text-primary border-b-2"
                 )}>
                   GenieLab
+                </a>
+              </Link>
+              <Link href="/ayurbot">
+                <a className={cn(
+                  "border-transparent text-darkText hover:text-primary border-b-2 hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium",
+                  isActive("/ayurbot") && "border-primary text-primary border-b-2"
+                )}>
+                  Ayur Bot
+                </a>
+              </Link>
+              <Link href="/forum">
+                <a className={cn(
+                  "border-transparent text-darkText hover:text-primary border-b-2 hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium",
+                  isActive("/forum") && "border-primary text-primary border-b-2"
+                )}>
+                  Forum
+                </a>
+              </Link>
+              <Link href="/network">
+                <a className={cn(
+                  "border-transparent text-darkText hover:text-primary border-b-2 hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium",
+                  isActive("/network") && "border-primary text-primary border-b-2"
+                )}>
+                  Network
                 </a>
               </Link>
               <Link href="/resources">
@@ -103,20 +119,36 @@ export default function Navbar() {
               Home
             </a>
           </Link>
-          <Link href="/network">
-            <a className={cn(
-              "text-darkText block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 hover:text-primary",
-              isActive("/network") && "bg-primary/10 text-primary block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-primary"
-            )}>
-              Network
-            </a>
-          </Link>
           <Link href="/genielab">
             <a className={cn(
               "text-darkText block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 hover:text-primary",
               isActive("/genielab") && "bg-primary/10 text-primary block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-primary"
             )}>
               GenieLab
+            </a>
+          </Link>
+          <Link href="/ayurbot">
+            <a className={cn(
+              "text-darkText block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 hover:text-primary",
+              isActive("/ayurbot") && "bg-primary/10 text-primary block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-primary"
+            )}>
+              Ayur Bot
+            </a>
+          </Link>
+          <Link href="/forum">
+            <a className={cn(
+              "text-darkText block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 hover:text-primary",
+              isActive("/forum") && "bg-primary/10 text-primary block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-primary"
+            )}>
+              Forum
+            </a>
+          </Link>
+          <Link href="/network">
+            <a className={cn(
+              "text-darkText block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 hover:text-primary",
+              isActive("/network") && "bg-primary/10 text-primary block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-primary"
+            )}>
+              Network
             </a>
           </Link>
           <Link href="/resources">

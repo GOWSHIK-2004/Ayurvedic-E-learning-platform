@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-heading font-bold mb-4">AyurConnect</h3>
+            <h3 className="text-xl font-heading font-bold mb-4">Vedic Genie</h3>
             <p className="text-white/80 mb-4">Connecting practitioners, students, and enthusiasts of Ayurvedic medicine worldwide.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-white/80 hover:text-white">
