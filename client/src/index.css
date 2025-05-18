@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 154 47% 45%; /* #5A8F7B */
+  --primary-foreground: 211 100% 99%;
+  --secondary: 38 47% 64%; /* #D4A373 */
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 25 29% 48%; /* #8D6E63 */
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 154 47% 45%;
+  --chart-2: 38 47% 64%;
+  --chart-3: 25 29% 48%;
+  --chart-4: 33 17% 90%; /* #F5F1E9 */
+  --chart-5: 20 14.3% 20.1%;
+  --sidebar-background: 240 10% 3.9%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 154 47% 45%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 25 29% 48%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 240 4.9% 83.9%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 154 47% 45%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 38 47% 64%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 25 29% 48%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  --chart-1: 154 47% 45%;
+  --chart-2: 38 47% 64%;
+  --chart-3: 25 29% 48%;
+  --chart-4: 33 17% 90%;
+  --chart-5: 20 14.3% 20.1%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* GenieLab Specific Styling */
+.ayurvedic-bg {
+  background-color: #F5F1E9;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTYwIDE2MCI+CiAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxwYXRoIGZpbGw9IiM4RDZFNjMiIGZpbGwtb3BhY2l0eT0iLjA1IiBkPSJNODAgMGMxMy4wODYgMCAyNC4zODYgNy42MyAyOS43NzQgMTguNjg4QTI5LjkyNCAyOS45MjQgMCAwIDEgMTI5LjI1MSAyOWg0LjUyNEMxNDMuMjA3IDI5IDE1MCAzNS43OTMgMTUwIDQ0LjIyNXYxNS41NWMwIDguNDMyLTYuNzkzIDE1LjIyNS0xNS4yMjUgMTUuMjI1aC0xNS41NUMxMTAuNzkzIDc1IDEwNCA2OC4yMDcgMTA0IDU5Ljc3NVY0NC4yMjVDMTA0IDM1Ljc5MyAxMTAuNzkzIDI5IDExOS4yMjUgMjloNC41MjRhMTkuOTggMTkuOTggMCAwIDAtMTMuMTYtNi4wNTNjLTIuMDA2IDAtMy45NDMuMy01Ljc3Ljg1QTM5LjkxNiAzOS45MTYgMCAwIDAgODAgMTBhMzkuOTE2IDM5LjkxNiAwIDAgMC0yNC44MiAxMy43OTcgMTkuODMgMTkuODMgMCAwIDAtNS43NjktLjg1QzM5LjAyIDIyLjk0NyAzMCAzMS45NjggMzAgNDIuOTQ3YzAgMS4zNTIuMTM1IDIuNjcuMzkyIDMuOTQzQTI5LjkyNSAyOS45MjUgMCAwIDAgMjAgNzVjMCAxNi41NjkgMTMuNDMxIDMwIDMwIDMwYzUuMzEgMCAxMC4zMDMtMS4zOCAxNC42MzMtMy44MDRBMjkuOTI1IDI5LjkyNSAwIDAgMCA3NyAxMDlsLTIuMzE0IDI1LjQ1NGMtLjc3OSA4LjU2NSA1LjkxIDE1Ljk5OCAxNC40NzUgMTYuNzc3IDguNTY1Ljc3OSAxNS45OTgtNS45MSAxNi43NzctMTQuNDc1TDEwOC40MzQgOTlhMjkuOTI1IDI5LjkyNSAwIDAgMCAxMi4zNjYtNy44MDRBMjkuODk4IDI5Ljg5OCAwIDAgMCAxMzUgMTA1YzE2LjU2OSAwIDMwLTEzLjQzMSAzMC0zMHMtMTMuNDMxLTMwLTMwLTMwYy01LjMxIDAtMTAuMzAzIDEuMzgtMTQuNjMzIDMuODA0QTI5Ljk5MyAyOS45OTMgMCAwIDAgOTkuODIzIDQxYy0xLjM4MS04LjQ4MS05LjQtMTMuOTc0LTE3LjU2My0xMS4xMDFDODMuNzkgMjMuMDU1IDg1IDE0Ljc3NiA4NSAwSDYwYzAgOS45NjYgMS43OTUgMTkuMDE4IDQuODI3IDI1Ljc5OC03LjU2NC0xLjE4Mi0xNC44MTggMy41Ni0xNi43NDYgMTEuNGEyOS45NzggMjkuOTc4IDAgMCAwLTI4LjcxNCA2Ljc4NCAzOS44MzkgMzkuODM5IDAgMCAxLS4zNTgtMS4wMzVDMjAuMTM1IDQ1LjYxNyAyMCA0NC4yOTggMjAgNDIuOTQ3YzAtNS45NzcgNC44NDgtMTAuODI1IDEwLjgyNS0xMC44MjVhMTAuNzcgMTAuNzcgMCAwIDEgNS42OTUgMS42M0E0MC4wODkgNDAuMDg5IDAgMCAxIDUwIDIwYzExLjA2MiAwIDIwLjczOSA1LjY4MiAyNi4zNjMgMTQuMjk0YTM5LjkzNiAzOS45MzYgMCAwIDEgNy4yNzQtLjY2NmMuNjggMCAxLjM1My4wMTggMi4wMi4wNTJBMTEuOTQ5IDExLjk0OSAwIDAgMSA4NS4xNDMgMTBIODBjMCAxOS4zMyAyIDQwIDQwIDI3LTQtMTgtMjAtMjctNDAtMjd6Ii8+CiAgPC9nPgo8L3N2Zz4=');
+  background-repeat: repeat;
+}
+
+.palm-leaf-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.palm-leaf-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxwYXRoIGZpbGw9IiM4RDZFNjMiIGZpbGwtb3BhY2l0eT0iLjA1IiBkPSJNNDAgMTBjLTUgMTUtMTAgMzAtMTUgNDVNMjUgNjBjMTAgMTAgMjAgMjAgMzAgMzBNNTAgOTVjMTUtNSAzMC0xMCA0NS0xNU05MCAwYy0zMCAzMC02MCA2MC05MCA5ME0wIDIwYzI2LjY2NyAyNi42NjcgNTMuMzMzIDUzLjMzMyA4MCA4ME0xMCAwYzMwIDMwIDYwIDYwIDkwIDkwIi8+CiAgPC9nPgo8L3N2Zz4=');
+  background-size: 100px 100px;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.palm-leaf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.letter-index {
+  position: relative;
+  border-left: 3px solid #D4A373;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.font-heading {
+  font-family: 'Merriweather', serif;
+}
+
+.font-body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hero-palm {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-palm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-palm > * {
+  position: relative;
+  z-index: 2;
+}
