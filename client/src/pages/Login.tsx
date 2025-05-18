@@ -37,16 +37,27 @@ export default function Login() {
   async function onSubmit(values: LoginFormValues) {
     setIsLoading(true);
     try {
-      const response = await apiRequest("POST", "/api/login", values);
+      // Direct fetch implementation for better error handling
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+        credentials: "include"
+      });
+      
+      const data = await response.json();
       
       if (response.ok) {
         toast({
           title: "Login successful",
           description: "You have been logged in successfully.",
         });
-        window.location.href = "/";
+        
+        // Refresh user data in the auth hook
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 500);
       } else {
-        const data = await response.json();
         toast({
           title: "Login failed",
           description: data.message || "Invalid username or password.",
@@ -54,9 +65,10 @@ export default function Login() {
         });
       }
     } catch (error) {
+      console.error("Login error:", error);
       toast({
         title: "Login failed",
-        description: error instanceof Error ? error.message : "Something went wrong.",
+        description: "Unable to connect to the server. Please try again later.",
         variant: "destructive",
       });
     } finally {

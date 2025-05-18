@@ -83,7 +83,7 @@ export default function Navbar() {
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             {isAuthenticated && user ? (
               <div className="flex items-center">
-                <span className="text-darkText mr-2">{user.username}</span>
+                <span className="text-darkText mr-2">{user?.username || 'User'}</span>
                 <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center">
                   <User className="h-5 w-5" />
                 </div>
@@ -137,7 +137,7 @@ export default function Navbar() {
             {isAuthenticated && user ? (
               <div className="flex flex-col items-center">
                 <div className="flex items-center justify-center">
-                  <span className="text-darkText mr-2">{user.username}</span>
+                  <span className="text-darkText mr-2">{user?.username || 'User'}</span>
                   <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center">
                     <User className="h-5 w-5" />
                   </div>
