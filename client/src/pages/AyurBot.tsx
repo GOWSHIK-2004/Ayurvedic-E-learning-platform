@@ -12,7 +12,16 @@ import { Book, Upload, Bot, Search, Send, Loader2 } from "lucide-react";
 
 // Initialize Google Generative AI using the provided API key
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
+console.log("API Key check:", GOOGLE_API_KEY ? "API key exists" : "API key missing");
+
+// Create Google Generative AI instance with proper error handling
+let genAI: any;
+try {
+  genAI = new GoogleGenerativeAI(GOOGLE_API_KEY || "");
+} catch (error) {
+  console.error("Error initializing Google Generative AI:", error);
+  genAI = null;
+}
 
 export default function AyurBot() {
   const { toast } = useToast();
@@ -61,9 +70,17 @@ export default function AyurBot() {
     if (!GOOGLE_API_KEY) {
       toast({
         title: "API Key Missing",
-        description: "Google Gemini API key is not configured. Please contact the administrator.",
+        description: "Google Gemini API key is required for this feature. Please add VITE_GOOGLE_API_KEY to your environment.",
         variant: "destructive",
       });
+      
+      // Add a message to the conversation
+      const aiMessage = { 
+        role: "assistant", 
+        content: "I'm unable to respond because the Google Gemini API key is missing. Please add a valid API key to the environment variables (VITE_GOOGLE_API_KEY)."
+      };
+      setConversations(prev => [...prev, aiMessage]);
+      setIsLoadingResponse(false);
       return;
     }
 
@@ -87,6 +104,8 @@ export default function AyurBot() {
 
       // Call Google's Generative AI
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      
+      console.log("Making request to Gemini API with key length:", GOOGLE_API_KEY?.length || 0);
       
       // Prepare the prompt with the context and user query
       const prompt = context + "\n\nUser query: " + query;
