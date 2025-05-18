@@ -43,7 +43,16 @@ export default function Register() {
     setIsLoading(true);
     try {
       const { confirmPassword, ...submitData } = values;
-      const response = await apiRequest("POST", "/api/register", submitData);
+      
+      // Direct fetch implementation for better error handling
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitData),
+        credentials: "include"
+      });
+      
+      const data = await response.json();
       
       if (response.ok) {
         toast({
@@ -52,7 +61,6 @@ export default function Register() {
         });
         window.location.href = "/login";
       } else {
-        const data = await response.json();
         toast({
           title: "Registration failed",
           description: data.message || "Failed to create account.",
@@ -60,9 +68,10 @@ export default function Register() {
         });
       }
     } catch (error) {
+      console.error("Registration error:", error);
       toast({
         title: "Registration failed",
-        description: error instanceof Error ? error.message : "Something went wrong.",
+        description: "Unable to connect to the server. Please try again later.",
         variant: "destructive",
       });
     } finally {

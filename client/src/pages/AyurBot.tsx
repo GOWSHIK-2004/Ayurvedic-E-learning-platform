@@ -11,7 +11,7 @@ import { ayurvedicBooks } from "@/data/books";
 import { Book, Upload, Bot, Search, Send, Loader2 } from "lucide-react";
 
 // Initialize Google Generative AI using the provided API key
-const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY || "";
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 
 export default function AyurBot() {
@@ -57,6 +57,16 @@ export default function AyurBot() {
     e.preventDefault();
     if (!query.trim()) return;
 
+    // Check if API key is available
+    if (!GOOGLE_API_KEY) {
+      toast({
+        title: "API Key Missing",
+        description: "Google Gemini API key is not configured. Please contact the administrator.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       // Add user query to conversation
       const userMessage = { role: "user", content: query };
@@ -77,18 +87,33 @@ export default function AyurBot() {
 
       // Call Google's Generative AI
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      const result = await model.generateContent(context + "\n\nUser query: " + query);
+      
+      // Prepare the prompt with the context and user query
+      const prompt = context + "\n\nUser query: " + query;
+      
+      // Generate content
+      const result = await model.generateContent(prompt);
       const response = result.response.text();
 
       // Add AI response to conversation
       const aiMessage = { role: "assistant", content: response };
       setConversations(prev => [...prev, aiMessage]);
       setQuery("");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error generating content:", error);
+      
+      // More specific error message based on the error
+      let errorMessage = "Failed to get a response. Please try again later.";
+      
+      if (error.message?.includes("API key")) {
+        errorMessage = "Invalid API key or authentication issue. Please contact the administrator.";
+      } else if (error.message?.includes("network")) {
+        errorMessage = "Network error. Please check your internet connection.";
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to get a response. Please try again later.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
